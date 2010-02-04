@@ -1,6 +1,7 @@
 <?php
 class User extends AppModel {
 	var $name = 'User';
+	var $actsAs = array('Acl' => 'requester');
 	var $validate = array(
 		'username' => array(
 			'notempty' => array(
@@ -60,10 +61,6 @@ class User extends AppModel {
 			'counterQuery' => ''
 		)
 	);
-
-	var $name = 'User';
-	var $belongsTo = array('Group');
-	var $actsAs = array('Acl' => 'requester');
 	 
 	function parentNode() {
 		if (!$this->id && empty($this->data)) {
