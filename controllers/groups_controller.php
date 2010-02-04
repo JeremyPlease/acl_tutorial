@@ -58,5 +58,11 @@ class GroupsController extends AppController {
 		$this->Session->setFlash(sprintf(__('%s was not deleted', true), 'Group'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function beforeFilter() {
+    parent::beforeFilter(); 
+    $this->Auth->allow('*');
+}
+
 }
 ?>

@@ -62,5 +62,20 @@ class UsersController extends AppController {
 		$this->Session->setFlash(sprintf(__('%s was not deleted', true), 'User'));
 		$this->redirect(array('action' => 'index'));
 	}
+	
+	function login() {
+    //Auth Magic
+	}
+ 
+	function logout() {
+    //Leave empty for now.
+	}
+	
+	function beforeFilter() {
+    parent::beforeFilter(); 
+    $this->Auth->allow('*');
+	}
+
+
 }
 ?>
