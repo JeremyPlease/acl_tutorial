@@ -32,7 +32,7 @@
  */
 
 class AppController extends Controller {
-    var $components = array('Acl', 'Auth');
+    var $components = array('Acl', 'Auth', 'Session');
 
     function beforeFilter() {
         //Configure AuthComponent
