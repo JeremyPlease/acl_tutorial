@@ -42,6 +42,8 @@ class AppController extends Controller {
         $this->Auth->loginRedirect = array('controller' => 'posts', 'action' => 'add');
 		$this->Auth->actionPath = 'controllers/';
     }
+	
+
 
 }
 ?>
