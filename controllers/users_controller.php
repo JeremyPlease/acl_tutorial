@@ -67,12 +67,17 @@ class UsersController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
+
 	function login() {
-    //Auth Magic
-	}
+		if ($this->Session->read('Auth.User')) {
+			$this->Session->setFlash('You are logged in!');
+			$this->redirect('/', null, false);
+		}
+	}     
  
 	function logout() {
-    //Leave empty for now.
+		$this->Session->setFlash('Good-Bye');
+		$this->redirect($this->Auth->logout());
 	}
 
 
