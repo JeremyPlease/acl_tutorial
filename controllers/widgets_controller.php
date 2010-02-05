@@ -3,6 +3,11 @@ class WidgetsController extends AppController {
 
 	var $name = 'Widgets';
 
+	function beforeFilter() {
+		parent::beforeFilter(); 
+		$this->Auth->allowedActions = array('index', 'view');
+	}
+
 	function index() {
 		$this->Widget->recursive = 0;
 		$this->set('widgets', $this->paginate());

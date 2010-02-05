@@ -1,8 +1,8 @@
 <?php
 class GroupsController extends AppController {
 
-	var $name = 'Groups';
-
+	var $name = 'Groups';}
+	
 	function index() {
 		$this->Group->recursive = 0;
 		$this->set('groups', $this->paginate());
@@ -59,10 +59,7 @@ class GroupsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
-	function beforeFilter() {
-		parent::beforeFilter(); 
-		$this->Auth->allow('*');
-	}
+
 
 }
 ?>

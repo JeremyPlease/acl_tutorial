@@ -3,6 +3,10 @@ class UsersController extends AppController {
 
 	var $name = 'Users';
 
+	function beforeFilter() {        
+		$this->Auth->allow('login','logout');
+	}
+	
 	function index() {
 		$this->User->recursive = 0;
 		$this->set('users', $this->paginate());
@@ -70,11 +74,7 @@ class UsersController extends AppController {
 	function logout() {
     //Leave empty for now.
 	}
-	
-	function beforeFilter() {
-    parent::beforeFilter(); 
-    $this->Auth->allow('*');
-	}
+
 
 
 }
