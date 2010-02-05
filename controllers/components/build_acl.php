@@ -1,13 +1,20 @@
 <?php
 class BuildAclComponent extends Object {
 
+	var $groupModel = null;
+	var $controller = null;
+	
+	function initialize(&$controller) {
+		$this->controller = $controller;
+	}
+	
 	function build() {
 		if (!Configure::read('debug')) {
 			return $this->_stop();
 		}
 		$log = array();
 
-		$aco =& $this->Acl->Aco;
+		$aco =& $this->controller->Acl->Aco;
 		$root = $aco->node('controllers');
 		if (!$root) {
 			$aco->create(array('parent_id' => null, 'model' => null, 'alias' => 'controllers'));
@@ -86,6 +93,19 @@ class BuildAclComponent extends Object {
 		}
 	}
 
+	function updatePermissions($group_id, $path, $type = 'allow', $groupModel = null) {
+		if (!$this->groupModel) {
+			if ($groupModel) {
+				$this->groupModel = $groupModel;
+			} else {
+				App::import('Model', 'Group');
+				$this->groupModel =& new Group;
+			}
+		}
+		$this->groupModel->id = $group_id;
+		return $this->controller->Acl->$type($this->groupModel, $path);
+	}
+	
 	function _getClassMethods($ctrlName = null) {
 		App::import('Controller', $ctrlName);
 		if (strlen(strstr($ctrlName, '.')) > 0) {
