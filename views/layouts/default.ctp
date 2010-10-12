@@ -1,5 +1,5 @@
 <?php
-
+$session->flash('auth');
 /**
  *
  * PHP versions 4 and 5

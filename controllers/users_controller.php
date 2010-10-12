@@ -73,6 +73,9 @@ class UsersController extends AppController {
 			$this->Session->setFlash('You are logged in!');
 			$this->redirect('/', null, false);
 		}
+		else {
+		$this->Session->setFlash('Invalid login');
+		}
 	}     
  
 	function logout() {

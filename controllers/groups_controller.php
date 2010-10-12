@@ -1,7 +1,7 @@
 <?php
 class GroupsController extends AppController {
 
-	var $name = 'Groups';}
+	var $name = 'Groups';
 	
 	function index() {
 		$this->Group->recursive = 0;
@@ -59,7 +59,6 @@ class GroupsController extends AppController {
 		$this->redirect(array('action' => 'index'));
 	}
 	
-
 
 }
 ?>
